@@ -1,0 +1,16 @@
+es:
+  image: dockerfile/elasticsearch
+  volumes:
+    - ./config:/data/config
+  volumes_from:
+    - data
+  ports: 
+    - 9200
+  command: /elasticsearch/bin/elasticsearch -Des.config=/data/config/elasticsearch.yml
+data:
+  image: ubuntu 
+  volumes:
+    - /data/logs
+    - /data/data
+    - /data/plugins
+  command: /bin/bash
